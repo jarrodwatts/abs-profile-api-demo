@@ -6,7 +6,7 @@ import { useLoginWithAbstract } from "@abstract-foundation/agw-react";
 import UserProfile from "@/components/UserProfile";
 
 export default function Home() {
-  const { address, isConnecting, isReconnecting, isConnected } = useAccount();
+  const { isConnecting, isReconnecting, isConnected } = useAccount();
   const { login } = useLoginWithAbstract();
 
   // 1. Loading / connecting states -----------------------------------------

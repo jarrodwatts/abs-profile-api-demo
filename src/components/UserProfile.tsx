@@ -2,6 +2,7 @@
 
 import { useUserProfile } from "@/hooks/useUserProfile";
 import { useAccount } from "wagmi";
+import Image from "next/image";
 
 export default function UserProfile() {
   const { isConnected } = useAccount();
@@ -46,24 +47,34 @@ export default function UserProfile() {
   const flashBadges = claimedBadges.filter((b) => b.badge.type === "flash");
   const regularBadges = claimedBadges.filter((b) => b.badge.type === "regular");
   const secretBadges = claimedBadges.filter((b) => b.badge.type === "secret");
-  
+
   const getTierName = (tier: number) => {
     switch (tier) {
-      case 1: return "Bronze";
-      case 2: return "Silver";
-      case 3: return "Gold";
-      case 4: return "Platinum";
-      default: return `Tier ${tier}`;
+      case 1:
+        return "Bronze";
+      case 2:
+        return "Silver";
+      case 3:
+        return "Gold";
+      case 4:
+        return "Platinum";
+      default:
+        return `Tier ${tier}`;
     }
   };
-  
+
   const getTierColors = (tier: number) => {
     switch (tier) {
-      case 1: return "bg-amber-700 text-amber-100"; // Bronze
-      case 2: return "bg-gray-500 text-gray-100"; // Silver
-      case 3: return "bg-yellow-600 text-yellow-100"; // Gold
-      case 4: return "bg-purple-600 text-purple-100"; // Platinum
-      default: return "bg-blue-600 text-blue-100";
+      case 1:
+        return "bg-amber-700 text-amber-100"; // Bronze
+      case 2:
+        return "bg-gray-500 text-gray-100"; // Silver
+      case 3:
+        return "bg-yellow-600 text-yellow-100"; // Gold
+      case 4:
+        return "bg-purple-600 text-purple-100"; // Platinum
+      default:
+        return "bg-blue-600 text-blue-100";
     }
   };
 
@@ -72,7 +83,7 @@ export default function UserProfile() {
       {/* Profile Header */}
       <div className="flex items-center space-x-6 mb-8">
         <div className="relative">
-          <img
+          <Image
             src={user.overrideProfilePictureUrl || "/default-avatar.png"}
             alt={`${user.name}'s avatar`}
             className="w-24 h-24 rounded-full object-cover border-4 border-gray-600"
@@ -85,7 +96,11 @@ export default function UserProfile() {
           <h1 className="text-3xl font-bold text-white">{user.name}</h1>
           <p className="text-gray-300 mt-2">{user.description}</p>
           <div className="flex items-center mt-3 space-x-4">
-            <span className={`px-3 py-1 ${getTierColors(user.tier)} rounded-full text-sm font-medium`}>
+            <span
+              className={`px-3 py-1 ${getTierColors(
+                user.tier
+              )} rounded-full text-sm font-medium`}
+            >
               {getTierName(user.tier)}
             </span>
             {user.verification && (
@@ -171,9 +186,11 @@ export default function UserProfile() {
             <div
               key={badge.badge.id}
               className={`p-3 rounded-lg ${
-                badge.badge.type === 'flash' ? 'bg-orange-900' :
-                badge.badge.type === 'secret' ? 'bg-purple-900' :
-                'bg-gray-700'
+                badge.badge.type === "flash"
+                  ? "bg-orange-900"
+                  : badge.badge.type === "secret"
+                  ? "bg-purple-900"
+                  : "bg-gray-700"
               }`}
             >
               <h4 className="font-medium text-white text-sm">
