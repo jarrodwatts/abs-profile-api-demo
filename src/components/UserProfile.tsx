@@ -86,6 +86,8 @@ export default function UserProfile() {
           <Image
             src={user.overrideProfilePictureUrl || "/default-avatar.png"}
             alt={`${user.name}'s avatar`}
+            width={96}
+            height={96}
             className="w-24 h-24 rounded-full object-cover border-4 border-gray-600"
           />
           <div className="absolute -bottom-2 -right-2 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
